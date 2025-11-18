@@ -1,5 +1,102 @@
 const { useState } = React;
-const { AlertCircle, CheckCircle, Code, MessageSquare, Lightbulb, Send } = window.lucide;
+
+// Componentes de iconos simples (sin librería externa)
+function AlertCircle(props) {
+  return React.createElement('svg', {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: props.className?.includes('w-16') ? 64 : props.className?.includes('w-8') ? 32 : 20,
+    height: props.className?.includes('w-16') ? 64 : props.className?.includes('w-8') ? 32 : 20,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    className: props.className
+  },
+    React.createElement('circle', { cx: "12", cy: "12", r: "10" }),
+    React.createElement('line', { x1: "12", y1: "8", x2: "12", y2: "12" }),
+    React.createElement('line', { x1: "12", y1: "16", x2: "12.01", y2: "16" })
+  );
+}
+
+function CheckCircle(props) {
+  return React.createElement('svg', {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 20,
+    height: 20,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    className: props.className
+  },
+    React.createElement('path', { d: "M22 11.08V12a10 10 0 1 1-5.93-9.14" }),
+    React.createElement('polyline', { points: "22 4 12 14.01 9 11.01" })
+  );
+}
+
+function Code(props) {
+  return React.createElement('svg', {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: props.className?.includes('w-16') ? 64 : props.className?.includes('w-8') ? 32 : 20,
+    height: props.className?.includes('w-16') ? 64 : props.className?.includes('w-8') ? 32 : 20,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    className: props.className
+  },
+    React.createElement('polyline', { points: "16 18 22 12 16 6" }),
+    React.createElement('polyline', { points: "8 6 2 12 8 18" })
+  );
+}
+
+function MessageSquare(props) {
+  return React.createElement('svg', {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 20,
+    height: 20,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    className: props.className
+  },
+    React.createElement('path', { d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" })
+  );
+}
+
+function Lightbulb(props) {
+  return React.createElement('svg', {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    className: props.className
+  },
+    React.createElement('path', { d: "M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" }),
+    React.createElement('path', { d: "M9 18h6" }),
+    React.createElement('path', { d: "M10 22h4" })
+  );
+}
+
+function Send(props) {
+  return React.createElement('svg', {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 20,
+    height: 20,
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    className: props.className
+  },
+    React.createElement('line', { x1: "22", y1: "2", x2: "11", y2: "13" }),
+    React.createElement('polygon', { points: "22 2 15 22 11 13 2 9 22 2" })
+  );
+}
 
 function PythonTutor() {
   const [code, setCode] = useState('');
@@ -139,181 +236,150 @@ Responde de forma clara, amigable y educativa. Si es necesario, proporciona ejem
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-          <div className="flex items-center gap-3 mb-2">
-            <Code className="w-8 h-8 text-indigo-600" />
-            <h1 className="text-3xl font-bold text-gray-800">Tutor Virtual de Python</h1>
-          </div>
-          <p className="text-gray-600">Aprende Python identificando y corrigiendo errores en tu código</p>
-        </div>
+  return React.createElement('div', { className: "min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6" },
+    React.createElement('div', { className: "max-w-6xl mx-auto" },
+      React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-6 mb-6" },
+        React.createElement('div', { className: "flex items-center gap-3 mb-2" },
+          React.createElement(Code, { className: "w-8 h-8 text-indigo-600" }),
+          React.createElement('h1', { className: "text-3xl font-bold text-gray-800" }, 'Tutor Virtual de Python')
+        ),
+        React.createElement('p', { className: "text-gray-600" }, 'Aprende Python identificando y corrigiendo errores en tu código')
+      ),
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-              <Code className="w-5 h-5 text-indigo-600" />
-              Tu Código Python
-            </h2>
-            <textarea
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              placeholder="Escribe o pega tu código Python aquí...&#10;&#10;Ejemplo:&#10;def saludar(nombre)&#10;    print('Hola ' + nombre)"
-              className="w-full h-64 p-4 font-mono text-sm border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none resize-none"
-            />
-            <button
-              onClick={analyzeCode}
-              disabled={loading}
-              className="w-full mt-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
-            >
-              {loading ? (
-                <>
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  Analizando...
-                </>
-              ) : (
-                <>
-                  <AlertCircle className="w-5 h-5" />
-                  Analizar Código
-                </>
-              )}
-            </button>
-          </div>
+      React.createElement('div', { className: "grid grid-cols-1 lg:grid-cols-2 gap-6" },
+        React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-6" },
+          React.createElement('h2', { className: "text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2" },
+            React.createElement(Code, { className: "w-5 h-5 text-indigo-600" }),
+            'Tu Código Python'
+          ),
+          React.createElement('textarea', {
+            value: code,
+            onChange: (e) => setCode(e.target.value),
+            placeholder: "Escribe o pega tu código Python aquí...\n\nEjemplo:\ndef saludar(nombre)\n    print('Hola ' + nombre)",
+            className: "w-full h-64 p-4 font-mono text-sm border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none resize-none"
+          }),
+          React.createElement('button', {
+            onClick: analyzeCode,
+            disabled: loading,
+            className: "w-full mt-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+          },
+            loading ? [
+              React.createElement('div', { key: 'spinner', className: "w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" }),
+              'Analizando...'
+            ] : [
+              React.createElement(AlertCircle, { key: 'icon', className: "w-5 h-5" }),
+              'Analizar Código'
+            ]
+          )
+        ),
 
-          <div className="bg-white rounded-lg shadow-lg p-6 overflow-y-auto max-h-96">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">Análisis y Correcciones</h2>
-            
-            {!analysis ? (
-              <div className="text-center text-gray-500 py-12">
-                <Code className="w-16 h-16 mx-auto mb-4 text-gray-300" />
-                <p>Ingresa tu código y presiona "Analizar Código" para comenzar</p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <div className={`p-4 rounded-lg ${analysis.hasErrors ? 'bg-red-50 border-l-4 border-red-500' : 'bg-green-50 border-l-4 border-green-500'}`}>
-                  <div className="flex items-center gap-2 mb-2">
-                    {analysis.hasErrors ? (
-                      <>
-                        <AlertCircle className="w-5 h-5 text-red-600" />
-                        <span className="font-semibold text-red-800">Errores Encontrados</span>
-                      </>
-                    ) : (
-                      <>
-                        <CheckCircle className="w-5 h-5 text-green-600" />
-                        <span className="font-semibold text-green-800">¡Código Correcto!</span>
-                      </>
-                    )}
-                  </div>
-                  {analysis.errorType && (
-                    <p className="text-sm text-red-700">Tipo: <code className="bg-red-100 px-2 py-1 rounded">{analysis.errorType}</code></p>
-                  )}
-                </div>
+        React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-6 overflow-y-auto max-h-96" },
+          React.createElement('h2', { className: "text-xl font-semibold text-gray-800 mb-4" }, 'Análisis y Correcciones'),
+          
+          !analysis ? 
+            React.createElement('div', { className: "text-center text-gray-500 py-12" },
+              React.createElement(Code, { className: "w-16 h-16 mx-auto mb-4 text-gray-300" }),
+              React.createElement('p', null, 'Ingresa tu código y presiona "Analizar Código" para comenzar')
+            ) :
+            React.createElement('div', { className: "space-y-4" },
+              React.createElement('div', { className: `p-4 rounded-lg ${analysis.hasErrors ? 'bg-red-50 border-l-4 border-red-500' : 'bg-green-50 border-l-4 border-green-500'}` },
+                React.createElement('div', { className: "flex items-center gap-2 mb-2" },
+                  analysis.hasErrors ? [
+                    React.createElement(AlertCircle, { key: 'icon', className: "w-5 h-5 text-red-600" }),
+                    React.createElement('span', { key: 'text', className: "font-semibold text-red-800" }, 'Errores Encontrados')
+                  ] : [
+                    React.createElement(CheckCircle, { key: 'icon', className: "w-5 h-5 text-green-600" }),
+                    React.createElement('span', { key: 'text', className: "font-semibold text-green-800" }, '¡Código Correcto!')
+                  ]
+                ),
+                analysis.errorType && React.createElement('p', { className: "text-sm text-red-700" }, 
+                  'Tipo: ', 
+                  React.createElement('code', { className: "bg-red-100 px-2 py-1 rounded" }, analysis.errorType)
+                )
+              ),
 
-                <div className="bg-blue-50 p-4 rounded-lg">
-                  <h3 className="font-semibold text-blue-900 mb-2">📝 Explicación</h3>
-                  <p className="text-blue-800 text-sm">{analysis.explanation}</p>
-                </div>
+              React.createElement('div', { className: "bg-blue-50 p-4 rounded-lg" },
+                React.createElement('h3', { className: "font-semibold text-blue-900 mb-2" }, '📝 Explicación'),
+                React.createElement('p', { className: "text-blue-800 text-sm" }, analysis.explanation)
+              ),
 
-                {analysis.steps && analysis.steps.length > 0 && (
-                  <div className="bg-yellow-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-yellow-900 mb-2">🔧 Cómo Corregirlo</h3>
-                    <ol className="list-decimal list-inside space-y-1 text-sm text-yellow-800">
-                      {analysis.steps.map((step, idx) => (
-                        <li key={idx}>{step}</li>
-                      ))}
-                    </ol>
-                  </div>
-                )}
+              analysis.steps && analysis.steps.length > 0 && React.createElement('div', { className: "bg-yellow-50 p-4 rounded-lg" },
+                React.createElement('h3', { className: "font-semibold text-yellow-900 mb-2" }, '🔧 Cómo Corregirlo'),
+                React.createElement('ol', { className: "list-decimal list-inside space-y-1 text-sm text-yellow-800" },
+                  analysis.steps.map((step, idx) => React.createElement('li', { key: idx }, step))
+                )
+              ),
 
-                {analysis.correctedCode && (
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-gray-900 mb-2">✅ Código Corregido</h3>
-                    <pre className="bg-gray-800 text-green-400 p-3 rounded text-xs overflow-x-auto">
-                      <code>{analysis.correctedCode}</code>
-                    </pre>
-                  </div>
-                )}
+              analysis.correctedCode && React.createElement('div', { className: "bg-gray-50 p-4 rounded-lg" },
+                React.createElement('h3', { className: "font-semibold text-gray-900 mb-2" }, '✅ Código Corregido'),
+                React.createElement('pre', { className: "bg-gray-800 text-green-400 p-3 rounded text-xs overflow-x-auto" },
+                  React.createElement('code', null, analysis.correctedCode)
+                )
+              ),
 
-                {analysis.bestPractices && analysis.bestPractices.length > 0 && (
-                  <div className="bg-purple-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-purple-900 mb-2 flex items-center gap-2">
-                      <Lightbulb className="w-4 h-4" />
-                      Consejos de Buenas Prácticas
-                    </h3>
-                    <ul className="list-disc list-inside space-y-1 text-sm text-purple-800">
-                      {analysis.bestPractices.map((tip, idx) => (
-                        <li key={idx}>{tip}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
+              analysis.bestPractices && analysis.bestPractices.length > 0 && React.createElement('div', { className: "bg-purple-50 p-4 rounded-lg" },
+                React.createElement('h3', { className: "font-semibold text-purple-900 mb-2 flex items-center gap-2" },
+                  React.createElement(Lightbulb, { className: "w-4 h-4" }),
+                  'Consejos de Buenas Prácticas'
+                ),
+                React.createElement('ul', { className: "list-disc list-inside space-y-1 text-sm text-purple-800" },
+                  analysis.bestPractices.map((tip, idx) => React.createElement('li', { key: idx }, tip))
+                )
+              )
+            )
+        )
+      ),
 
-        {analysis && (
-          <div className="bg-white rounded-lg shadow-lg p-6 mt-6">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-indigo-600" />
-              Chat con tu Tutor
-            </h2>
-            
-            <div className="bg-gray-50 rounded-lg p-4 h-64 overflow-y-auto mb-4">
-              {chatMessages.length === 0 ? (
-                <p className="text-gray-500 text-center py-8">Haz una pregunta sobre tu código o los errores encontrados</p>
-              ) : (
-                <div className="space-y-3">
-                  {chatMessages.map((msg, idx) => (
-                    <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-[80%] p-3 rounded-lg ${
-                        msg.role === 'user' 
-                          ? 'bg-indigo-600 text-white' 
-                          : 'bg-white border-2 border-gray-200 text-gray-800'
-                      }`}>
-                        <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
-                      </div>
-                    </div>
-                  ))}
-                  {chatLoading && (
-                    <div className="flex justify-start">
-                      <div className="bg-white border-2 border-gray-200 p-3 rounded-lg">
-                        <div className="flex gap-2">
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0ms'}} />
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}} />
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}} />
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+      analysis && React.createElement('div', { className: "bg-white rounded-lg shadow-lg p-6 mt-6" },
+        React.createElement('h2', { className: "text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2" },
+          React.createElement(MessageSquare, { className: "w-5 h-5 text-indigo-600" }),
+          'Chat con tu Tutor'
+        ),
+        
+        React.createElement('div', { className: "bg-gray-50 rounded-lg p-4 h-64 overflow-y-auto mb-4" },
+          chatMessages.length === 0 ?
+            React.createElement('p', { className: "text-gray-500 text-center py-8" }, 'Haz una pregunta sobre tu código o los errores encontrados') :
+            React.createElement('div', { className: "space-y-3" },
+              chatMessages.map((msg, idx) =>
+                React.createElement('div', { key: idx, className: `flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}` },
+                  React.createElement('div', { className: `max-w-[80%] p-3 rounded-lg ${msg.role === 'user' ? 'bg-indigo-600 text-white' : 'bg-white border-2 border-gray-200 text-gray-800'}` },
+                    React.createElement('p', { className: "text-sm whitespace-pre-wrap" }, msg.content)
+                  )
+                )
+              ),
+              chatLoading && React.createElement('div', { className: "flex justify-start" },
+                React.createElement('div', { className: "bg-white border-2 border-gray-200 p-3 rounded-lg" },
+                  React.createElement('div', { className: "flex gap-2" },
+                    React.createElement('div', { className: "w-2 h-2 bg-gray-400 rounded-full animate-bounce", style: {animationDelay: '0ms'} }),
+                    React.createElement('div', { className: "w-2 h-2 bg-gray-400 rounded-full animate-bounce", style: {animationDelay: '150ms'} }),
+                    React.createElement('div', { className: "w-2 h-2 bg-gray-400 rounded-full animate-bounce", style: {animationDelay: '300ms'} })
+                  )
+                )
+              )
+            )
+        ),
 
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && sendChatMessage()}
-                placeholder="Escribe tu pregunta aquí..."
-                className="flex-1 p-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none"
-                disabled={chatLoading}
-              />
-              <button
-                onClick={sendChatMessage}
-                disabled={chatLoading || !chatInput.trim()}
-                className="bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 text-white px-6 py-3 rounded-lg transition-colors flex items-center gap-2"
-              >
-                <Send className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
+        React.createElement('div', { className: "flex gap-2" },
+          React.createElement('input', {
+            type: "text",
+            value: chatInput,
+            onChange: (e) => setChatInput(e.target.value),
+            onKeyPress: (e) => e.key === 'Enter' && sendChatMessage(),
+            placeholder: "Escribe tu pregunta aquí...",
+            className: "flex-1 p-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none",
+            disabled: chatLoading
+          }),
+          React.createElement('button', {
+            onClick: sendChatMessage,
+            disabled: chatLoading || !chatInput.trim(),
+            className: "bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-400 text-white px-6 py-3 rounded-lg transition-colors flex items-center gap-2"
+          },
+            React.createElement(Send, { className: "w-5 h-5" })
+          )
+        )
+      )
+    )
   );
 }
 
-ReactDOM.render(<PythonTutor />, document.getElementById('root'));
+ReactDOM.render(React.createElement(PythonTutor), document.getElementById('root'));
